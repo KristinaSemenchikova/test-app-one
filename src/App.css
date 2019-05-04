@@ -3,8 +3,8 @@
   background :gainsboro;
   padding: 0 ;
   display: grid;
-  grid-template-rows: 50px 11fr;
-  grid-template-columns: 1fr 2fr 10fr ;
+  grid-template-rows: 50px 700px;
+  grid-template-columns: 150px 2fr 10fr ;
   grid-template-areas:
    "h m s " 
   " n m s ";

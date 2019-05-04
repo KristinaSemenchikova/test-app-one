@@ -56,10 +56,15 @@ let initialState = {
         {name: 'Page G', uv: 4000, pv: 4300, amt: 2100},
       ]
     }
-  ]
+  ],
+  selectedStockId : 1,
+  findStockName: ''
 };
 
 export const addToMyStocksAC = createAction("ADD_TO_MY_STOCKS");
+export const deleteFromMyStocksAC = createAction("DELETE_FROM_MY_STOCKS");
+export const selectStockAC = createAction("SELECT_STOCK");
+export const findStockByNameAC = createAction("FIND_STOCK");
 
 const stocksReduser = handleActions(
   {
@@ -67,6 +72,20 @@ const stocksReduser = handleActions(
       let newState = { ...state, stocks: [...state.stocks] };
       let newStateStock = newState.stocks.filter(item => item.id === id);
       newStateStock[0].isAdded = true;
+      return newState;
+    },
+    [deleteFromMyStocksAC.toString()]: (state, { payload: id }) => {
+      let newState = { ...state, stocks: [...state.stocks] };
+      let newStateStock = newState.stocks.filter(item => item.id === id);
+      newStateStock[0].isAdded = false;
+      return newState;
+    },
+    [selectStockAC.toString()]: (state, { payload: id }) => {
+      let newState = { ...state, selectedStockId: id };
+      return newState;
+    },
+    [findStockByNameAC.toString()]: (state, { payload: text }) => {
+      let newState = { ...state, findStockName: text };
       return newState;
     }
   },

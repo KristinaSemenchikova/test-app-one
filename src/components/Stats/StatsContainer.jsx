@@ -1,21 +1,22 @@
 import React from 'react';
 import s from './Stats.module.css'
 import Stats from './Stats';
-import { stocks } from '../../redux/selectors';
-import { addToMyStocksAC } from '../../redux/stocks-reducer';
+import { statsOfSelectedStock } from '../../redux/selectors';
+import { addToMyStocksAC, deleteFromMyStocksAC } from '../../redux/stocks-reducer';
 import { connect } from 'react-redux';
 
 const StatsContainer = (props) => {
     return (
       <Stats
-      stocks = {props.stocks}
+      stock = {props.stock}
       addToMyStocks = {props.addToMyStocks}
+      deleteFromMyStocks = {props.deleteFromMyStocks}
       />
     )
 }
 const mapStateToProps = (state) => {
   return ({
-     stocks: stocks(state)
+     stock: statsOfSelectedStock(state)
   })
 }
 const mapDispatchToProps = (dispatch) => {
@@ -23,6 +24,9 @@ const mapDispatchToProps = (dispatch) => {
       addToMyStocks: (id) => {
           dispatch(addToMyStocksAC(id))
       },
+      deleteFromMyStocks: (id) => {
+        dispatch(deleteFromMyStocksAC(id))
+    },
   }
   )
 }

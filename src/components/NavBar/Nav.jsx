@@ -1,26 +1,15 @@
 import React from 'react';
 import s from './Nav.module.css'
+import { NavLink } from "react-router-dom";
 
 const Nav = () => {
     return (
       <nav className = {s.nav}>
        <div>
-         My stocks
+         <NavLink to = '/mystocks'>My stocks </NavLink>
        </div>
        <div>
-         Buy stocks
-       </div>
-       <div>
-         Pending orders
-       </div>
-       <div>
-         Insights
-       </div>
-       <div>
-        Settings
-       </div>
-       <div>
-       History
+       <NavLink to = '/stocks'>All stocks </NavLink>
        </div>
     </nav>
     )

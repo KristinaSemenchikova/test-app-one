@@ -1,4 +1,25 @@
 .stats {
-    grid-area: s;
-    background-color: white;
-  }
+  grid-area: s;
+  background-color: white;
+}
+
+button {
+  margin:  10px 30px;
+  padding: 7px 16px 8px;
+  font-size: 15px;
+  display: inline-block;
+  zoom: 1;
+  cursor: pointer;
+  white-space: nowrap;
+  outline: none;
+  font-family: 'Playfair Display', serif;
+  vertical-align: top;
+  line-height: 15px;
+  text-align: center;
+  text-decoration: none;
+  background: none;
+  color: white; 
+  border: 0;
+  border-radius: 10%;
+  background-color: #2ECC71;
+}
