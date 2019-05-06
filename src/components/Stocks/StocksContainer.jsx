@@ -3,7 +3,6 @@ import { stocksByName} from '../../redux/selectors';
 import { selectStockAC, findStockByNameAC } from '../../redux/stocks-reducer';
 import { connect } from 'react-redux';
 import Stocks from './Stocks';
-import { withRouter } from "react-router-dom";
 
 const StocksContainer = (props) => {
     return (
@@ -30,4 +29,4 @@ const mapDispatchToProps = (dispatch) => {
   }
   )
 }
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(StocksContainer));
+export default connect(mapStateToProps, mapDispatchToProps)(StocksContainer);

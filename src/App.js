@@ -1,19 +1,15 @@
 import React from 'react';
 import './App.css';
-import Header from './components/Header/Header';
-import StatsContainer from './components/Stats/StatsContainer';
-import StocksContainer from './components/Stocks/StocksContainer';
-import NavContainer from './components/NavBar/NavContainer';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
+import StockPage from './components/StockPage';
 
 function App() {
   return (
     <div className="App">
-      <Header />
-      <NavContainer />
-      <StocksContainer />
       <Switch>
-        <Route path='/:id?' render={() => <StatsContainer />} />
+        <Route exact path='/' render={() => <Redirect to = '/stock' />} />
+        <Route path='stock/:id?' render={() => <StockPage />} />
+        <Route path='/stock' render={() => <StockPage />} />
       </Switch>
     </div>
   );

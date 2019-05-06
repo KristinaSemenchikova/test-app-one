@@ -1,12 +1,9 @@
 import React from "react";
 import s from "./Stocks.module.css";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink,withRouter} from "react-router-dom";
 import { LineChart, Line } from "recharts";
 
 const Stocks = props => {
-  let id = props.location.pathname.replace('/', '');
-  props.selectStock(+id);
-
   let findStock = e => {
     let text = e.target.value;
     props.findStock(text)
@@ -18,7 +15,7 @@ const Stocks = props => {
   let stocks = props.stocks.map(item => {
     return (
       <NavLink
-        to={`/${item.id}`}
+        to={`${props.match.path}/${item.id}`}
         activeClassName={s.active}
         className={s.selectStock}
         key={item.id}

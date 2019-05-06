@@ -11,15 +11,12 @@ const Nav = (props) => {
   }
   let all = '';
   let my = '';
-  if (props.filter == 'all') {
-    all = s.active
-  } else if (props.filter == 'my') {
-    my = s.active
-  }
+  if (props.filter === 'all') all = s.active
+  if (props.filter === 'my') my = s.active
   return (
     <nav className={s.nav}>
-        <NavLink to='/' className={my} onClick={selectMyStocks}>My stocks </NavLink>
-        <NavLink to='/' className={all} onClick={selectAllStocks}>All stocks </NavLink>
+      <NavLink to='/stock' className={my} onClick={selectMyStocks}>My stocks </NavLink>
+      <NavLink to='/stock' className={all} onClick={selectAllStocks}>All stocks </NavLink>
     </nav>
   )
 }

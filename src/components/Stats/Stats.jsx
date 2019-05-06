@@ -2,6 +2,7 @@ import React from "react";
 import s from "./Stats.module.css";
 import { LineChart, Line } from "recharts";
 
+
 const Stats = props => {
   let addToMy = (e) => {
     let id = +e.target.dataset.id;
