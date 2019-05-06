@@ -1,4 +1,17 @@
 .nav {
-    grid-area: n;
-    
-  }
+  grid-area: n;
+  border-right: 1px solid gray;
+}
+.nav a {
+  display: inline-block;
+  height: 30px;
+  text-decoration: none;
+  color: black;
+  font-size: 15pt;
+  width:149px;
+  padding: 10px
+}
+
+.active {
+  background-color: white
+}

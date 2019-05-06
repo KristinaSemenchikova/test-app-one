@@ -2,7 +2,8 @@
     grid-area: h;
     position: fixed;
     background: #2ECC71; 
-    width: 150px;  
+    width: 170px;  
+    margin-bottom: 5px;
   }
   .header img {
     padding-left: 46px;

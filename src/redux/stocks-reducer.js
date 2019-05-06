@@ -57,7 +57,8 @@ let initialState = {
       ]
     }
   ],
-  selectedStockId : 1,
+  selectedStockId : 0,
+  stocksFilter: 'all',
   findStockName: ''
 };
 
@@ -65,6 +66,7 @@ export const addToMyStocksAC = createAction("ADD_TO_MY_STOCKS");
 export const deleteFromMyStocksAC = createAction("DELETE_FROM_MY_STOCKS");
 export const selectStockAC = createAction("SELECT_STOCK");
 export const findStockByNameAC = createAction("FIND_STOCK");
+export const filterStockAC = createAction("FILTER_STOCK");
 
 const stocksReduser = handleActions(
   {
@@ -87,7 +89,11 @@ const stocksReduser = handleActions(
     [findStockByNameAC.toString()]: (state, { payload: text }) => {
       let newState = { ...state, findStockName: text };
       return newState;
-    }
+    },
+    [filterStockAC.toString()]: (state, { payload: text }) => {
+      let newState = { ...state, stocksFilter: text };
+      return newState;
+    },
   },
   initialState
 );

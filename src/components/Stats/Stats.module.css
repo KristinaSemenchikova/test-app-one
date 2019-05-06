@@ -1,6 +1,7 @@
 .stats {
   grid-area: s;
   background-color: white;
+  padding: 10px
 }
 
 button {

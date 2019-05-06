@@ -1,11 +1,13 @@
 .App {
   min-height: 100vh;
-  background :gainsboro;
+  background : lightgrey;
   padding: 0 ;
   display: grid;
   grid-template-rows: 50px 700px;
-  grid-template-columns: 150px 2fr 10fr ;
+  grid-template-columns: 170px 3fr 9fr ;
   grid-template-areas:
    "h m s " 
   " n m s ";
+  font-family: 'Playfair Display';
+  font-weight: bold;
 }

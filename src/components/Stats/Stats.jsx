@@ -21,9 +21,10 @@ const Stats = props => {
         <Line type="monotone" dataKey="pv" stroke="#2ECC71" strokeWidth={2} />
       </LineChart>
       <div>{item.about}</div>
-      <div className={s.stockButtons}>
-        <button data-id = {item.id} onClick = {deleteFromMy}>Sell</button>
-        <button data-id = {item.id} onClick = {addToMy}>Buy</button>
+      <div className={s.stockButtons}> {item.isAdded
+        ? <button data-id={item.id} onClick={deleteFromMy}>Sell</button>
+        : <button data-id={item.id} onClick={addToMy}>Buy</button>
+      }
       </div>
     </div>
   ));

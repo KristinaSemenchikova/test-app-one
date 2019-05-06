@@ -1,8 +1,12 @@
 import React from "react";
 import s from "./Stocks.module.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
+import { LineChart, Line } from "recharts";
 
 const Stocks = props => {
+  let id = props.location.pathname.replace('/', '');
+  props.selectStock(+id);
+
   let findStock = e => {
     let text = e.target.value;
     props.findStock(text)
@@ -12,10 +16,9 @@ const Stocks = props => {
     props.selectStock(id);
   };
   let stocks = props.stocks.map(item => {
-    let path = "/stocks/" + item.id;
     return (
       <NavLink
-        to={path}
+        to={`/${item.id}`}
         activeClassName={s.active}
         className={s.selectStock}
         key={item.id}
@@ -26,6 +29,11 @@ const Stocks = props => {
           <div id={s.name}>{item.name} </div>
           <div id={s.shares}>{item.shares} SHARES </div>
         </div>
+        <>
+          <LineChart width={60} height={50} data={item.stats}>
+            <Line type="monotone" dataKey="pv" stroke="#2ECC71" strokeWidth={1} />
+          </LineChart>
+        </>
         <span id={s.price}>{item.price} </span>
       </NavLink>
     );
@@ -42,4 +50,4 @@ const Stocks = props => {
     </nav>
   );
 };
-export default Stocks;
+export default withRouter(Stocks);
