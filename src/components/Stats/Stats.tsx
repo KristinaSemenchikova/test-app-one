@@ -1,14 +1,14 @@
-import React from "react";
-import s from "./Stats.module.css";
+import * as React from "react";
+import "./Stats.css";
 import { LineChart, Line } from "recharts";
+import {StatsProps} from '../Interfaces/Interfaces'
 
-
-const Stats = props => {
-  let addToMy = (e) => {
+const Stats = (props : StatsProps) => {
+  let addToMy = (e:any) => {
     let id = +e.target.dataset.id;
     props.addToMyStocks(id)
   };
-  let deleteFromMy = (e) => {
+  let deleteFromMy = (e:any) => {
     let id = +e.target.dataset.id;
     props.deleteFromMyStocks(id)
   };
@@ -22,7 +22,7 @@ const Stats = props => {
         <Line type="monotone" dataKey="pv" stroke="#2ECC71" strokeWidth={2} />
       </LineChart>
       <div>{item.about}</div>
-      <div className={s.stockButtons}> {item.isAdded
+      <div className= "stockButton"> {item.isAdded
         ? <button data-id={item.id} onClick={deleteFromMy}>Sell</button>
         : <button data-id={item.id} onClick={addToMy}>Buy</button>
       }
@@ -30,8 +30,8 @@ const Stats = props => {
     </div>
   ));
   return (
-    <nav className={s.stats}>
-      <div className={s.charts}>{charts}</div>
+    <nav className="stats">
+      <div className= "charts">{charts}</div>
     </nav>
   );
 };

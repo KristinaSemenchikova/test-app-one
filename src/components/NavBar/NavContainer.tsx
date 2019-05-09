@@ -1,10 +1,11 @@
-import React from 'react';
+import * as React from "react";
 import {  filterStockAC } from '../../redux/stocks-reducer';
 import { connect } from 'react-redux';
 import Nav from './Nav';
 import { filteredStocks, filter } from '../../redux/selectors';
+import {NavProps} from '../Interfaces/Interfaces';
 
-const NavContainer = (props) => {
+const NavContainer = (props : NavProps) => {
     return (
       <Nav
       stocks = {props.stocks}
@@ -13,15 +14,15 @@ const NavContainer = (props) => {
       />
     )
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state :any) => {
   return ({
      stocks: filteredStocks(state),
      filter: filter(state)
   })
 }
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:any) => {
   return ({
-      filterStock: (text) => {
+      filterStock: (text:string) => {
           dispatch(filterStockAC(text))
       }
   }

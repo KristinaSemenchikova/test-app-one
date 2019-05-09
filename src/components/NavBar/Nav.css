@@ -2,7 +2,7 @@
   grid-area: n;
   border-right: 1px solid gray;
 }
-.nav a {
+.nav div {
   display: inline-block;
   height: 30px;
   text-decoration: none;

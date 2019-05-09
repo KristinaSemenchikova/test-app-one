@@ -1,9 +1,20 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore, applyMiddleware} from "redux";
+import createSagaMiddleware from 'redux-saga';
 import stocksReduser from './stocks-reducer';
+import {usersSaga} from './redux-saga';
 
-let reducers = combineReducers({
-    stocksPage: stocksReduser
+const sagaMiddleware = createSagaMiddleware();
+
+const rootReducer = combineReducers({
+    stocksPage: stocksReduser,
 });
-let store = createStore(reducers);
+
+const store = createStore(
+    rootReducer,
+    applyMiddleware(sagaMiddleware)
+);
+
+sagaMiddleware.run(usersSaga);
+
 
 export default store;
