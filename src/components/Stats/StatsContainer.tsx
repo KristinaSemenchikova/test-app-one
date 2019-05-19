@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import {StatsProps} from '../Interfaces/Interfaces'
 
 const StatsContainer = (props: StatsProps) => {
-  // props.selectStock(+props.match.params.id);
   return (
     <Stats
       stock={props.stock}

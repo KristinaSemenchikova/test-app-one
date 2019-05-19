@@ -1,7 +1,7 @@
 import { combineReducers, createStore, applyMiddleware} from "redux";
 import createSagaMiddleware from 'redux-saga';
 import stocksReduser from './stocks-reducer';
-import {usersSaga} from './redux-saga';
+import {watcherSaga} from './redux-saga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,7 +14,7 @@ const store = createStore(
     applyMiddleware(sagaMiddleware)
 );
 
-sagaMiddleware.run(usersSaga);
+sagaMiddleware.run(watcherSaga);
 
 
 export default store;

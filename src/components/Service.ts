@@ -1,8 +1,7 @@
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
 
-async function getStocksFromServer() {
-  debugger
+function getStocksFromServer() {
   let mock = new MockAdapter(axios);
   mock.onGet('/stocks').reply(200, {
     stocks: [

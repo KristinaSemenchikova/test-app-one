@@ -3,48 +3,45 @@ import { stocksByName } from '../../redux/selectors';
 import { selectStockAC, findStockByNameAC, setStocksAC, loadStocksLoading } from '../../redux/stocks-reducer';
 import { connect } from 'react-redux';
 import Stocks from './Stocks';
+import { StocksProps} from "../Interfaces/Interfaces";
 
 
-class StocksContainer extends React.Component {
-  constructor(props) {
+class StocksContainer extends React.Component<StocksProps> {
+  constructor(props:StocksProps) {
     super(props);
   }
   componentDidMount(){
-    this.props.loadStocks()
+    this.props.loadStocksLoading()
   }
   render() {
-
     return (
       <Stocks
         stocks={this.props.stocks}
         selectStock={this.props.selectStock}
         findStock={this.props.findStock}
-        loadStocks = {this.props.loadStocks}
+        loadStocksLoading = {this.props.loadStocksLoading}
       />
     )
   }
 
 }
-const mapStateToProps = (state) => {
+const mapStateToProps = (state:any) => {
   return ({
     stocks: stocksByName(state)
   })
 }
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:any) => {
   return ({
-    selectStock: (id) => {
+    selectStock: (id:number) => {
       dispatch(selectStockAC(id))
     },
-    findStock: (text) => {
+    findStock: (text:string) => {
       dispatch(findStockByNameAC(text))
     },
-    setStocks: (stocks) => {
-      dispatch(setStocksAC(stocks))
-    },
-    loadStocks : ()=> {
+    loadStocksLoading : ()=> {
       dispatch(loadStocksLoading())
     }
   }
   )
 }
-export default connect(mapStateToProps, mapDispatchToProps)(StocksContainer);
+export default connect<any,any>(mapStateToProps, mapDispatchToProps)(StocksContainer);

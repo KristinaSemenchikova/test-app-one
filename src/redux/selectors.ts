@@ -1,6 +1,7 @@
+import { IStock } from './../components/Interfaces/Interfaces';
 import { createSelector } from "reselect";
 
-let stocksPageSelector = state => state.stocksPage;
+let stocksPageSelector = (state:any) => state.stocksPage;
 
 export let stocks = createSelector(
   stocksPageSelector,
@@ -15,7 +16,7 @@ export let filteredStocks = createSelector(
   [stocks, filter],
   (stocks, stocksFilter) => {
     if (stocksFilter === 'my') {
-      let filteredStock = stocks.filter(item => item.isAdded === true);
+      let filteredStock = stocks.filter((item: IStock) => item.isAdded === true);
       return filteredStock;
     }
     return stocks
@@ -32,7 +33,7 @@ export let findStockName = createSelector(
 export let statsOfSelectedStock = createSelector(
   [filteredStocks, selectedStockId],
   (filteredStocks, selectedStockId) => {
-    let selectedStock = filteredStocks.filter(item => item.id === selectedStockId);
+    let selectedStock = filteredStocks.filter((item: IStock) => item.id === selectedStockId);
     return selectedStock;
   }
 );
@@ -40,7 +41,7 @@ export let stocksByName = createSelector(
   [filteredStocks, findStockName],
   (filteredStocks, findStockName) => {
     if (!(/\s/.test(findStockName)) && findStockName.length > 0) {
-      let stock = filteredStocks.filter(item => item.name.toLowerCase().includes(findStockName.toLowerCase()));
+      let stock = filteredStocks.filter((item: IStock) => item.name.toLowerCase().includes(findStockName.toLowerCase()));
       return stock;
     }
     return filteredStocks
