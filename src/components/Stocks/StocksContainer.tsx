@@ -1,6 +1,6 @@
 import * as React from "react";
 import { stocksByName } from '../../redux/selectors';
-import { selectStockAC, findStockByNameAC, setStocksAC, loadStocksLoading } from '../../redux/stocks-reducer';
+import { selectStockAC, findStockByNameAC, loadStocksLoading } from '../../redux/stocks-reducer';
 import { connect } from 'react-redux';
 import Stocks from './Stocks';
 import { StocksProps} from "../Interfaces/Interfaces";
